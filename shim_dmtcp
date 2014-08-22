@@ -355,7 +355,7 @@ ckptsignature
 # Each job will have its own dmtcp coordinator that exits when the job finishes.
 logit "starting the dmtcp_coordinator process"
 # We start it on an ephemeral port and save it for later.
-port=`${dmtcp_coordinator} --port 0 --exit-on-last --interval ${CKPTINT} --background 2>&1 | grep "Port:" | /bin/sed -e 's/Port://g' -e 's/[ \t]//g'`
+port=`${dmtcp_coordinator} --port 0 --exit-on-last --interval ${CKPTINT} --daemon 2>&1 | grep "Port:" | /bin/sed -e 's/Port://g' -e 's/[ \t]//g'`
 
 if [ $? -eq 0 ]; then
 	logit "started dmtcp_coordinator on port $port with checkpoint interval ${CKPTINT}"
