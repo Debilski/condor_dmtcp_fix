@@ -421,7 +421,7 @@ else
 	logit "DMTCP_HOST=$DMTCP_HOST"
 	logit "DMTCP_RESTART_DIR=$DMTCP_RESTART_DIR"
 	logit "./dmtcp_restart_script.sh"
-	./dmtcp_restart_script.sh &
+	./dmtcp_restart_script.sh <$STDIN 1>>$STDOUT 2>>$STDERR &
 	wait %1
 	ret=$?
 	logit "Application returned: $ret"
